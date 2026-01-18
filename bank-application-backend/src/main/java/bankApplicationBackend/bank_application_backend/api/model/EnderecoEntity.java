@@ -1,6 +1,5 @@
 package bankApplicationBackend.bank_application_backend.api.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import jakarta.persistence.*;
 
@@ -18,8 +17,7 @@ public class EnderecoEntity {
     @Column(name = "id_endereco")
     private Long idEndereco;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(
             name = "id_usuario",
             referencedColumnName = "id_usuario",
@@ -47,9 +45,4 @@ public class EnderecoEntity {
 
     @Column(name = "complemento", length = 45)
     private String complemento;
-
-    // Agencia
-    @JsonIgnore
-    @OneToOne(mappedBy = "endereco", fetch = FetchType.LAZY)
-    private AgenciaEntity agencia;
 }

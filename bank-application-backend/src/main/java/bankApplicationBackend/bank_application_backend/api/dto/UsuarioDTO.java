@@ -17,8 +17,4 @@ public class UsuarioDTO {
     private LocalDate dtNascimento;
     private String telefone;
     private Tipo_Usuario tipoUsuario;
-
-    // Relacionamentos com a tabela usuário
-    private Long idFuncionario;
-    private Long idCliente;
 }

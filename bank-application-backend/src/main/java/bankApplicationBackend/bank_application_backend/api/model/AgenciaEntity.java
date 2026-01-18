@@ -1,6 +1,5 @@
 package bankApplicationBackend.bank_application_backend.api.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import jakarta.persistence.*;
 
@@ -21,13 +20,12 @@ public class AgenciaEntity {
     @Column(name = "nome", nullable = false, length = 50)
     private String nome;
 
-    @Column(name = "codigo_agencia", nullable = false, unique = true, length = 10)
-    private String codigoAgencia;
+    @Column(name = "numero_agencia", nullable = false, unique = true, length = 10)
+    private String numeroAgencia;
 
-    @JsonIgnore
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(
-            name = "endereco_id",
+            name = "id_endereco",
             referencedColumnName = "id_endereco",
             nullable = false
     )

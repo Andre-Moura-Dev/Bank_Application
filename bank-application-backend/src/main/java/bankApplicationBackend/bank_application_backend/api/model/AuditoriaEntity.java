@@ -2,7 +2,7 @@ package bankApplicationBackend.bank_application_backend.api.model;
 
 import lombok.*;
 import jakarta.persistence.*;
-import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -10,15 +10,15 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Clientes")
-public class ClienteEntity {
+@Table(name = "Auditorias")
+public class AuditoriaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_cliente")
-    private Long idCliente;
+    @Column(name = "id_auditoria")
+    private Long idAuditoria;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(
             name = "id_usuario",
             referencedColumnName = "id_usuario",
@@ -26,6 +26,9 @@ public class ClienteEntity {
     )
     private UsuarioEntity usuario;
 
-    @Column(name = "score_credito", nullable = false, precision = 5, scale = 2)
-    private BigDecimal scoreCredito;
+    @Column(name = "acao", nullable = false, length = 50)
+    private String acao;
+
+    @Column(name = "dt_hora", nullable = false)
+    private LocalDateTime dtHora;
 }

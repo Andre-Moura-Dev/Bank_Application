@@ -1,6 +1,5 @@
 package bankApplicationBackend.bank_application_backend.api.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import jakarta.persistence.*;
 import bankApplicationBackend.bank_application_backend.api.enums.funcionarios.Cargo_Funcionario;
@@ -19,8 +18,7 @@ public class FuncionarioEntity {
     @Column(name = "id_funcionario")
     private Long idFuncionario;
 
-    @JsonIgnore
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(
             name = "id_usuario",
             referencedColumnName = "id_usuario",
@@ -28,15 +26,14 @@ public class FuncionarioEntity {
     )
     private UsuarioEntity usuario;
 
-    @Column(name = "codigo_funcionario", nullable = false, unique = true, length = 20)
-    private String codigoFuncionario;
+    @Column(name = "matricula", nullable = false, unique = true, length = 20)
+    private String matricula;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "cargo", nullable = false, length = 30)
     private Cargo_Funcionario cargoFuncionario;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "id_supervisor")
     private FuncionarioEntity supervisor;
 }
