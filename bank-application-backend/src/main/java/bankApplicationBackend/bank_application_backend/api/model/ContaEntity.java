@@ -47,8 +47,8 @@ public class ContaEntity {
     )
     private ClienteEntity cliente;
 
-    @Column(name = "data_abertura", nullable = false)
-    private LocalDateTime dataAbertura;
+    @Column(name = "dt_abertura", nullable = false)
+    private LocalDateTime dtAbertura;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 30)
